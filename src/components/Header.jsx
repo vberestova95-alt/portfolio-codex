@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ThemePill } from './ThemePill.jsx';
 
-export function Header({ contacts, name }) {
+export function Header({ contacts, name, theme, onThemeToggle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headerRef = useRef(null);
 
@@ -58,7 +58,11 @@ export function Header({ contacts, name }) {
             );
           })}
         </nav>
-        <ThemePill className="theme-pill--desktop" />
+        <ThemePill
+          className="theme-pill--desktop"
+          theme={theme}
+          onToggle={onThemeToggle}
+        />
         <button
           className="header-burger"
           type="button"
@@ -95,7 +99,11 @@ export function Header({ contacts, name }) {
         <div className="header-mobile-divider" aria-hidden="true" />
         <div className="header-mobile-toggle-row">
           <span className="header-mobile-toggle-label">Тема</span>
-          <ThemePill className="theme-pill--mobile" />
+          <ThemePill
+            className="theme-pill--mobile"
+            theme={theme}
+            onToggle={onThemeToggle}
+          />
         </div>
       </nav>
     </header>
