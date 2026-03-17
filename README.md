@@ -17,32 +17,33 @@ npm run build
 
 The production output is generated in `dist/`.
 
-## Deploy to Vercel
+## Deploy to GitHub Pages
 
-The repository is prepared for static deployment on Vercel via [Vite on Vercel](https://vercel.com/docs/frameworks/frontend/vite).
+The repository is prepared for GitHub Pages deployment through GitHub Actions.
 
-Project settings:
+### Included setup
 
-- Framework Preset: `Vite`
-- Build Command: `npm run build`
-- Output Directory: `dist`
+- `vite.config.js` uses `base: '/portfolio-codex/'`
+- `.github/workflows/deploy-pages.yml` builds and deploys the site from `main`
 
-### What you need to do in Vercel
+### What you need to do in GitHub
 
-1. Sign in to Vercel.
-2. Click `Add New...` -> `Project`.
-3. Import the GitHub repository `portfolio-codex`.
-4. Confirm the detected Vite settings.
-5. Click `Deploy`.
+1. Open the repository settings on GitHub.
+2. Go to `Settings` -> `Pages`.
+3. In `Build and deployment`, choose `Source: GitHub Actions`.
+4. Make sure the default branch is `main`.
+5. Push the latest changes to GitHub.
 
-After the first deploy, Vercel will create a production URL and automatic deploys for future pushes to `main`.
+After that, every push to `main` will trigger deployment to GitHub Pages automatically.
+
+Expected site URL:
+
+- `https://vberestova95-alt.github.io/portfolio-codex/`
 
 ### Optional custom domain
 
-To publish the site on your own domain, follow Vercel's [Add a Domain](https://vercel.com/docs/projects/domains/add-a-domain) flow after the first deployment.
+If you want to use your own domain later:
 
-What you will need to do:
-
-1. Add your domain in the Vercel project settings.
-2. Update DNS records at your domain registrar as instructed by Vercel.
-3. Wait for DNS propagation and SSL provisioning.
+1. Add a `CNAME` file with your domain.
+2. Configure the custom domain in GitHub Pages settings.
+3. Update DNS records at your registrar.
