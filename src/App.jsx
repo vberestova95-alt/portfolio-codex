@@ -3,9 +3,12 @@ import { Header } from './components/Header.jsx';
 import { CasesSection } from './sections/CasesSection.jsx';
 import { ExperienceSection } from './sections/ExperienceSection.jsx';
 import { HeroSection } from './sections/HeroSection.jsx';
+import { betboomPassCaseStudy } from './data/caseStudies.js';
 import { cases, experiences, profile } from './data/portfolioData.js';
+import { BetboomPassPage } from './pages/BetboomPassPage.jsx';
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
+const BETBOOM_PASS_PATH = '/betboom-pass';
 
 function getSystemTheme() {
   if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
@@ -29,6 +32,13 @@ export function App() {
   const [themePreference, setThemePreference] = useState(() => getStoredTheme());
   const [theme, setTheme] = useState(() => getStoredTheme() ?? getSystemTheme());
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+  const pathname = typeof window === 'undefined' ? '/' : window.location.pathname || '/';
+  const normalizedPathname =
+    pathname === '/index.html' || pathname.endsWith('/index.html')
+      ? pathname.slice(0, -'/index.html'.length) || '/'
+      : pathname;
+  const isCasePage =
+    normalizedPathname === BETBOOM_PASS_PATH || normalizedPathname === `${BETBOOM_PASS_PATH}/`;
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
@@ -91,6 +101,13 @@ export function App() {
     });
   };
 
+  const headerContacts = isCasePage
+    ? profile.contacts.map((contact) => ({
+        ...contact,
+        href: contact.href.startsWith('#') ? `/${contact.href}` : contact.href,
+      }))
+    : profile.contacts;
+
   return (
     <div className={`page-shell app theme-${theme}`}>
       <div className="hero-gradient" aria-hidden="true">
@@ -100,16 +117,23 @@ export function App() {
       </div>
       <div className={`header-shell${isHeaderScrolled ? ' is-scrolled' : ''}`}>
         <Header
-          contacts={profile.contacts}
+          contacts={headerContacts}
+          brandHref={isCasePage ? '/#top' : '#top'}
           name={profile.name}
           theme={theme}
           onThemeToggle={handleThemeToggle}
         />
       </div>
-      <main id="top" className="main-content">
-        <HeroSection profile={profile} />
-        <CasesSection items={cases} />
-        <ExperienceSection items={experiences} />
+      <main id="top" className={`main-content${isCasePage ? ' main-content-case' : ''}`}>
+        {isCasePage ? (
+          <BetboomPassPage caseStudy={betboomPassCaseStudy} />
+        ) : (
+          <>
+            <HeroSection profile={profile} />
+            <CasesSection items={cases} />
+            <ExperienceSection items={experiences} />
+          </>
+        )}
       </main>
     </div>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
-
-const experienceArrowIcon =
-  'https://www.figma.com/api/mcp/asset/d093ee97-0ad7-421e-9103-f3c6230bf199';
+import experienceArrowIcon from '../assets/experience-arrow.svg';
 
 function ExperienceItem({ company, period, tone }) {
   return (

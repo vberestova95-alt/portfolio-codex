@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ThemePill } from './ThemePill.jsx';
 
-export function Header({ contacts, name, theme, onThemeToggle }) {
+export function Header({ contacts, name, theme, onThemeToggle, brandHref = '#top' }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headerRef = useRef(null);
 
@@ -38,7 +38,7 @@ export function Header({ contacts, name, theme, onThemeToggle }) {
       ref={headerRef}
       className={`site-header section-shell${isMenuOpen ? ' is-menu-open' : ''}`}
     >
-      <a className="brand" href="#top">
+      <a className="brand" href={brandHref}>
         {name}
       </a>
       <div className="header-actions">

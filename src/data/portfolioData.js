@@ -1,9 +1,11 @@
+import profilePhoto from '../assets/profile-photo.jpg';
+
 export const profile = {
   name: 'Владислава Берестова',
   roleDescription:
     'Продуктовый дизайнер c опытом работы 6+ лет. Работаю в B2C над приложениями и веб-сервисами, имею опыт работы в B2B с системами для автоматизации бизнеса (BMS, CRM, личные кабинеты), интерфейсами для мобильных приложений в области умных домов и зданий',
   photo: {
-    src: 'https://www.figma.com/api/mcp/asset/ef1334f6-a71c-4393-b79d-1719644301e7',
+    src: profilePhoto,
     alt: 'Портрет Владиславы Берестовой',
   },
   contacts: [
@@ -33,7 +35,7 @@ export const cases = [
       alt: 'Мобильная версия кейса BetBoom PASS',
     },
     backdrop: 'https://www.figma.com/api/mcp/asset/a6f72e91-9cd9-4243-b452-88f6ae5c1fac',
-    href: '#',
+    href: '/betboom-pass',
   },
   {
     id: 'yandex-news',
