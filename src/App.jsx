@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header.jsx';
+import { MaintenanceScreen } from './components/MaintenanceScreen.jsx';
 import { CasesSection } from './sections/CasesSection.jsx';
 import { ExperienceSection } from './sections/ExperienceSection.jsx';
 import { HeroSection } from './sections/HeroSection.jsx';
@@ -9,6 +10,7 @@ import { BetboomPassPage } from './pages/BetboomPassPage.jsx';
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
 const BETBOOM_PASS_PATH = '/betboom-pass';
+const SITE_PAUSED = true;
 
 function getSystemTheme() {
   if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
@@ -115,26 +117,34 @@ export function App() {
         <span className="hero-gradient__blob hero-gradient__blob--center" />
         <span className="hero-gradient__blob hero-gradient__blob--top" />
       </div>
-      <div className={`header-shell${isHeaderScrolled ? ' is-scrolled' : ''}`}>
-        <Header
-          contacts={headerContacts}
-          brandHref={isCasePage ? '/#top' : '#top'}
-          name={profile.name}
-          theme={theme}
-          onThemeToggle={handleThemeToggle}
-        />
-      </div>
-      <main id="top" className={`main-content${isCasePage ? ' main-content-case' : ''}`}>
-        {isCasePage ? (
-          <BetboomPassPage caseStudy={betboomPassCaseStudy} />
-        ) : (
-          <>
-            <HeroSection profile={profile} />
-            <CasesSection items={cases} />
-            <ExperienceSection items={experiences} />
-          </>
-        )}
-      </main>
+      {SITE_PAUSED ? (
+        <main id="top" className="main-content main-content-maintenance">
+          <MaintenanceScreen />
+        </main>
+      ) : (
+        <>
+          <div className={`header-shell${isHeaderScrolled ? ' is-scrolled' : ''}`}>
+            <Header
+              contacts={headerContacts}
+              brandHref={isCasePage ? '/#top' : '#top'}
+              name={profile.name}
+              theme={theme}
+              onThemeToggle={handleThemeToggle}
+            />
+          </div>
+          <main id="top" className={`main-content${isCasePage ? ' main-content-case' : ''}`}>
+            {isCasePage ? (
+              <BetboomPassPage caseStudy={betboomPassCaseStudy} />
+            ) : (
+              <>
+                <HeroSection profile={profile} />
+                <CasesSection items={cases} />
+                <ExperienceSection items={experiences} />
+              </>
+            )}
+          </main>
+        </>
+      )}
     </div>
   );
 }

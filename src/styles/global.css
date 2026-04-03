@@ -220,6 +220,49 @@ button {
   z-index: 1;
 }
 
+.main-content-maintenance {
+  min-height: 100vh;
+}
+
+.maintenance-screen {
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding: clamp(88px, 16vh, 168px) 24px 40px;
+}
+
+.maintenance-screen__card {
+  width: min(100%, 720px);
+  padding: clamp(32px, 4vw, 56px);
+  border: 1px solid var(--case-study-card-border);
+  border-radius: 28px;
+  background: var(--case-study-card-bg);
+  box-shadow: var(--case-study-media-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.maintenance-screen__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.maintenance-screen__lead {
+  margin: 0;
+  max-width: 36ch;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+.maintenance-screen__note {
+  margin: 4px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
 .section-shell {
   width: min(calc(100% - (var(--desktop-side-padding) * 2)), var(--container));
   margin: 0 auto;
