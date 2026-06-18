@@ -1,4 +1,14 @@
+import betboomBackdrop from '../assets/cases/betboom-backdrop.png';
+import betboomFeaturedDesktop from '../assets/cases/betboom-featured-desktop.png';
+import betboomFeaturedMobile from '../assets/cases/betboom-featured-mobile.png';
+import iquotoDesktop from '../assets/cases/iquoto-desktop.png';
+import iquotoMobile from '../assets/cases/iquoto-mobile.png';
+import kokocMainDesktop from '../assets/cases/kokoc-main-desktop.png';
+import kokocMainMobile from '../assets/cases/kokoc-main-mobile.png';
+import kokocSideDesktop from '../assets/cases/kokoc-side-desktop.png';
 import profilePhoto from '../assets/profile-photo.jpg';
+import yandexNewsDesktop from '../assets/cases/yandex-news-desktop.png';
+import yandexNewsMobile from '../assets/cases/yandex-news-mobile.png';
 
 export const profile = {
   name: 'Владислава Берестова',
@@ -9,9 +19,9 @@ export const profile = {
     alt: 'Портрет Владиславы Берестовой',
   },
   contacts: [
-    { label: 'Dribbble', href: 'https://dribbble.com' },
-    { label: 'Телеграм', href: 'https://t.me' },
-    { label: 'CV', href: '#experience' },
+    { label: 'Dribbble', href: 'https://dribbble.com/Meoosh' },
+    { label: 'Телеграм', href: 'https://t.me/vberestova12' },
+    { label: 'CV', href: 'https://drive.google.com/file/d/1FrDWLxnVOMbm59KtxOH8Hcq17MbjjVUW/view?usp=drive_link' },
   ],
 };
 
@@ -27,32 +37,32 @@ export const cases = [
     theme: 'dark',
     variant: 'featured',
     image: {
-      src: 'https://www.figma.com/api/mcp/asset/b05ac6b2-40aa-4b1f-9e9a-5487f273e0f3',
+      src: betboomFeaturedDesktop,
       alt: 'Интерфейс кейса BetBoom PASS',
     },
     mobileImage: {
-      src: 'https://www.figma.com/api/mcp/asset/aaaa3b9f-b437-483a-b2c6-895c25af27ad',
+      src: betboomFeaturedMobile,
       alt: 'Мобильная версия кейса BetBoom PASS',
     },
-    backdrop: 'https://www.figma.com/api/mcp/asset/a6f72e91-9cd9-4243-b452-88f6ae5c1fac',
+    backdrop: betboomBackdrop,
     href: '/betboom-pass',
   },
   {
     id: 'yandex-news',
     title: 'Яндекс новости (Турция)',
     description:
-      'Тестирование MVP версии нового раздела новостей для аудитории Турции',
+      'Тестирование концепции нового раздела новостей для аудитории Турции',
     theme: 'light',
     variant: 'wide',
     image: {
-      src: 'https://www.figma.com/api/mcp/asset/4a501b3b-35e2-4010-b5c6-64c3b30c9261',
+      src: yandexNewsDesktop,
       alt: 'Экраны новостного продукта для аудитории Турции',
     },
     mobileImage: {
-      src: 'https://www.figma.com/api/mcp/asset/5322f178-876b-4ff8-b31a-59a8d1a883d7',
+      src: yandexNewsMobile,
       alt: 'Мобильная версия кейса Яндекс Новости',
     },
-    href: '#',
+    href: '/yandex-turkey',
   },
   {
     id: 'kokoc-group',
@@ -61,18 +71,18 @@ export const cases = [
     theme: 'light',
     variant: 'kokoc',
     image: {
-      src: 'https://www.figma.com/api/mcp/asset/6ab2912e-0bfc-4d40-8b78-65e9edf5b135',
+      src: kokocMainDesktop,
       alt: 'Главный экран кейса Kokoc Group',
     },
     mobileImage: {
-      src: 'https://www.figma.com/api/mcp/asset/270e1197-9f42-4ee8-9473-393b3c40cd87',
+      src: kokocMainMobile,
       alt: 'Мобильная версия кейса Kokoc Group',
     },
     secondaryImage: {
-      src: 'https://www.figma.com/api/mcp/asset/1ec434e4-e325-47ae-8df5-88590cad7544',
+      src: kokocSideDesktop,
       alt: 'Мобильный экран кейса Kokoc Group',
     },
-    href: '#',
+    href: '/kokoc-group',
   },
   {
     id: 'iquoto',
@@ -82,14 +92,14 @@ export const cases = [
     theme: 'light',
     variant: 'iquoto',
     image: {
-      src: 'https://www.figma.com/api/mcp/asset/788e9eff-d7fc-436d-8f60-42163c1475f5',
+      src: iquotoDesktop,
       alt: 'Интерфейс кейса IQuoto',
     },
     mobileImage: {
-      src: 'https://www.figma.com/api/mcp/asset/f8b864cd-527a-4c99-8c6f-966747d64cf4',
+      src: iquotoMobile,
       alt: 'Мобильная версия кейса IQuoto',
     },
-    href: '#',
+    href: '/iquoto',
   },
 ];
 
