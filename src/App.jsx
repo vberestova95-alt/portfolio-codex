@@ -35,14 +35,7 @@ function getQueryTheme() {
 }
 
 function shouldPauseSite() {
-  if (typeof window === 'undefined') {
-    return true;
-  }
-
-  const hostname = window.location.hostname;
-  const localHostnames = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
-
-  return !localHostnames.has(hostname);
+  return false;
 }
 
 function getSystemTheme() {
