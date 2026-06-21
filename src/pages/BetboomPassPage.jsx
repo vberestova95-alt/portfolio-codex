@@ -336,6 +336,33 @@ function SectionPart({ part }) {
     return <InsightCards part={part} />;
   }
 
+  if (part.type === 'phonePair') {
+    return (
+      <div className="case-image-band">
+        {part.label ? <span>{part.label}</span> : null}
+        <div className="case-phone-pair">
+          {part.items.map((item, i) => (
+            <div key={i} className="case-phone-pair__item">
+              {item.type === 'video' ? (
+                <video
+                  ref={el => { if (el) el.playbackRate = 0.67; }}
+                  src={item.src}
+                  aria-label={item.alt}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <img src={item.src} alt={item.alt} />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (part.type === 'beforeAfterSlider') {
     return <BeforeAfterSlider before={part.before} after={part.after} />;
   }
@@ -354,9 +381,44 @@ function SectionPart({ part }) {
   return null;
 }
 
+function Lightbox({ src, alt, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="case-lightbox" onClick={onClose}>
+      <button className="case-lightbox__close" onClick={onClose} aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      <img
+        className="case-lightbox__img"
+        src={src}
+        alt={alt}
+        onClick={(e) => e.stopPropagation()}
+      />
+    </div>
+  );
+}
+
 export function CaseStudyPage({ caseStudy }) {
   const sections = useMemo(() => caseStudy.sections, [caseStudy.sections]);
   const [activeSection, setActiveSection] = useState(sections[0]?.id ?? '');
+  const [lightbox, setLightbox] = useState(null);
+
+  const handleImgClick = useCallback((e) => {
+    if (e.target.tagName === 'IMG' && !e.target.closest('.case-ba-slider')) {
+      setLightbox({ src: e.target.src, alt: e.target.alt });
+    }
+  }, []);
   const [isFloatingBackVisible, setIsFloatingBackVisible] = useState(false);
   const [navStyles, setNavStyles] = useState({});
   const [navInnerStyles, setNavInnerStyles] = useState({});
@@ -523,7 +585,8 @@ export function CaseStudyPage({ caseStudy }) {
   };
 
   return (
-    <div className="case-study-page">
+    <div className="case-study-page" onClick={handleImgClick}>
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
       <a
         className={`case-back-link case-back-link--floating${
           isFloatingBackVisible ? ' is-visible' : ''

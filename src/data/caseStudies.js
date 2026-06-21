@@ -18,11 +18,16 @@ import kokocConcept2 from '../assets/cases/kokoc-concept-2.png';
 import kokocVideo1 from '../assets/cases/kokoc-video-1.mp4';
 import kokocVideoMenu from '../assets/cases/kokoc-video-menu.mp4';
 import kokocVideoCards from '../assets/cases/kokoc-video-cards.mp4';
+import yandexProdFinal from '../assets/cases/yandex-prod-final.mp4';
+import yandexFeedVideo from '../assets/cases/yandex-feed-video.mp4';
+import yandexFeedPersonal from '../assets/cases/yandex-feed-personal.png';
+import yandexProdScreen from '../assets/cases/yandex-prod-screen1.png';
 import yandexAbVariants from '../assets/cases/yandex-ab-variants.png';
 import yandexDesktopPatterns from '../assets/cases/yandex-desktop-patterns.png';
 import yandexFeedAlt from '../assets/cases/yandex-feed-alt.png';
 import yandexFeedTop from '../assets/cases/yandex-feed-top.png';
 import yandexFiltersFocus from '../assets/cases/yandex-filters-focus.png';
+import yandexPersonalization from '../assets/cases/yandex-personalization.png';
 import yandexMvpScreens from '../assets/cases/yandex-mvp-screens.png';
 import yandexNewsDesktop from '../assets/cases/yandex-news-desktop.png';
 import yandexProcessCards from '../assets/cases/yandex-process-cards.png';
@@ -476,11 +481,14 @@ export const iquotoCaseStudy = {
           ],
         },
         {
-          type: 'imageBand',
-          label: 'Процесс регистрации TO BE',
-          media: {
+          type: 'beforeAfterSlider',
+          before: {
             src: iquotoMapToBe,
-            alt: 'Карта нового процесса регистрации TO BE',
+            alt: 'Процесс регистрации TO BE',
+          },
+          after: {
+            src: iquotoMapAsIs,
+            alt: 'Процесс регистрации AS IS',
           },
         },
         {
@@ -713,12 +721,12 @@ export const yandexTurkeyCaseStudy = {
           ],
         },
         {
-          type: 'imageBand',
+          type: 'phonePair',
           label: 'Финальное решение на проде',
-          media: {
-            src: yandexMvpScreens,
-            alt: 'Финальное решение — основные экраны MVP новостного продукта',
-          },
+          items: [
+            { type: 'video', src: yandexProdFinal, alt: 'Финальное решение — видео интерфейса на проде' },
+            { type: 'image', src: yandexProdScreen, alt: 'Финальное решение — экран новостной ленты' },
+          ],
         },
         {
           type: 'noteCard',
@@ -741,7 +749,7 @@ export const yandexTurkeyCaseStudy = {
               heading: 'Настройка персонализированной ленты',
               paragraphs: [
                 'Пользователь может быстро задать базовые интересы без долгой настройки. Выбранные рубрики формируют основу для новостной ленты. Также пользователь видит, какие медиа сейчас участвуют в выдаче, и может отключать ненужные прямо в продукте.',
-                'Если источник выключен, его материалы пропадают из топов и категорий на главной.',
+                'На стороне сервиса новости агрегируются автоматически: LLM группирует материалы в сюжеты и определяет, какие источники попадают в выдачу. Если пользователь отключает источник, его материалы сразу пропадают из топов и категорий на главной.',
               ],
             },
           ],
@@ -749,7 +757,7 @@ export const yandexTurkeyCaseStudy = {
         {
           type: 'featureMedia',
           media: {
-            src: yandexFiltersFocus,
+            src: yandexPersonalization,
             alt: 'Экран настройки интересов и управления источниками',
           },
         },
@@ -767,11 +775,11 @@ export const yandexTurkeyCaseStudy = {
           ],
         },
         {
-          type: 'featureMedia',
-          media: {
-            src: yandexFeedTop,
-            alt: 'Персонализированная новостная лента For You',
-          },
+          type: 'phonePair',
+          items: [
+            { type: 'video', src: yandexFeedVideo, alt: 'Персонализированная новостная лента — видео' },
+            { type: 'image', src: yandexFeedPersonal, alt: 'Персонализированная новостная лента For You' },
+          ],
         },
         {
           type: 'blocks',
@@ -780,8 +788,8 @@ export const yandexTurkeyCaseStudy = {
               type: 'text',
               heading: 'Детальный просмотр сюжета',
               paragraphs: [
-                'Внутри детального просмотра пользователь видит разные мнения из разных источников. Бэкенд суммаризирует текст — пользователь получает краткую выжимку по теме с несколькими точками зрения.',
-                'Основная задача — показать, что это одна новость, но с разным взглядом, и дать возможность перейти в источник для более подробного прочтения.',
+                'Внутри детального просмотра пользователь видит одну тему сразу в нескольких интерпретациях: разные источники — разные точки зрения. На стороне бэкенда происходит суммаризация текста, и пользователь получает краткую выжимку, не читая каждую статью целиком.',
+                'Это помогает сформировать мнение не только о новости, но и о самом источнике. При желании можно перейти по ссылке и прочитать материал уже на сайте издания. Ключевая идея — показать, что одно событие может выглядеть по-разному в зависимости от того, кто о нём пишет.',
               ],
             },
           ],
@@ -792,38 +800,6 @@ export const yandexTurkeyCaseStudy = {
             src: yandexStoryFocus,
             alt: 'Детальный просмотр сюжета с несколькими источниками',
           },
-        },
-      ],
-    },
-    {
-      id: 'desktop-patterns',
-      navLabel: 'Десктоп',
-      title: 'Десктопные паттерны',
-      parts: [
-        {
-          type: 'richTextLead',
-          paragraphs: [
-            'В Figma параллельно были собраны и более широкие десктопные сценарии: поисковая выдача по вкладкам web, images и video, а также варианты раскрытия сюжета через дополнительные CTA.',
-            'На десктопе задача была похожей, но решалась чуть иначе: важно было встроить персонализацию в знакомую поисковую оболочку и не разрушить привычные паттерны поведения.',
-          ],
-        },
-        {
-          type: 'featureMedia',
-          wide: true,
-          media: {
-            src: yandexDesktopPatterns,
-            alt: 'Десктопный сценарий новостной выдачи Яндекса для Турции',
-          },
-        },
-        {
-          type: 'noteCard',
-          title: 'Что проверяли в десктопных макетах',
-          items: [
-            'Как выглядит новостный сценарий внутри поисковой выдачи и соседних вкладок.',
-            'Как пользователь переходит от общего запроса к изображениям, видео и более глубокому просмотру сюжета.',
-            'Какие CTA лучше объясняют переход к расширенному чтению: Full coverage, All sources, Full story и другие варианты.',
-            'Как сохранить единую логику между десктопом и mobile-first сценарием персонализации.',
-          ],
         },
       ],
     },
