@@ -16,6 +16,24 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function restoreGithubPagesRoute() {
+        const redirectedPath = window.sessionStorage.getItem('spa-redirect-path');
+
+        if (!redirectedPath) {
+          return;
+        }
+
+        window.sessionStorage.removeItem('spa-redirect-path');
+
+        const currentPath =
+          window.location.pathname + window.location.search + window.location.hash;
+
+        if (redirectedPath !== currentPath) {
+          window.history.replaceState(null, '', redirectedPath);
+        }
+      })();
+    </script>
     <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
     <script type="module" src="/src/main.jsx"></script>
   </head>
