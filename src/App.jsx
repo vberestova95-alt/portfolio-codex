@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header.jsx';
 import { MaintenanceScreen } from './components/MaintenanceScreen.jsx';
 import { CasesSection } from './sections/CasesSection.jsx';
+import { CatCaseTeaserSection } from './sections/CatCaseTeaserSection.jsx';
 import { ExperienceSection } from './sections/ExperienceSection.jsx';
 import { HeroSection } from './sections/HeroSection.jsx';
 import {
   betboomPassCaseStudy,
+  catAppCaseStudy,
   iquotoCaseStudy,
   kokocCaseStudy,
   yandexTurkeyCaseStudy,
@@ -18,6 +20,7 @@ const THEME_STORAGE_KEY = 'portfolio-theme';
 const COMPONENT_CATALOG_PATH = '/components-library';
 const CASE_STUDIES_BY_PATH = {
   '/betboom-pass': betboomPassCaseStudy,
+  '/cat-app': catAppCaseStudy,
   '/iquoto': iquotoCaseStudy,
   '/kokoc-group': kokocCaseStudy,
   '/yandex-turkey': yandexTurkeyCaseStudy,
@@ -189,6 +192,7 @@ export function App() {
                     <HeroSection profile={profile} />
                     <CasesSection items={cases} />
                     <ExperienceSection items={experiences} />
+                    <CatCaseTeaserSection />
                   </>
                 )}
               </main>

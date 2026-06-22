@@ -10,6 +10,12 @@ import iquotoMapToBe from '../assets/cases/iquoto-map-to-be.jpg';
 import iquotoVariants from '../assets/cases/iquoto-variants.png';
 import iquotoResult from '../assets/cases/iquoto-result.png';
 import betboomAbTestVideo from '../assets/betboom-ab-test.mp4';
+import catAppHero from '../assets/cases/cat-app-hero.svg';
+import catAppScreens from '../assets/cases/cat-app-screens.svg';
+import catWeeklyTrackerVideo from '../assets/cases/cat-weekly-tracker.mp4';
+import catTrackerScreen from '../assets/cases/cat-tracker-screen1.png';
+import catSolutionScreens from '../assets/cases/cat-solution-screens.png';
+import catConceptScreens from '../assets/cases/cat-concept-screens.png';
 import kokocCaseHero from '../assets/cases/kokoc-main-desktop.png';
 import kokocAbout from '../assets/cases/kokoc-about.png';
 import kokocPrototype from '../assets/cases/kokoc-prototype.png';
@@ -36,6 +42,143 @@ import yandexStoryFocus from '../assets/cases/yandex-story-focus.png';
 const heroImage = betboomTopScreen;
 const sportsTasksImage = betboomHypothesis;
 const hypothesisResultImage = betboomCaseHero;
+
+export const catAppCaseStudy = {
+  slug: 'cat-app',
+  backHref: '/#experience',
+  hero: {
+    title: 'Трекер уколов для питомцев',
+    description:
+      'Небольшой pet-tech side project про инсулинотерапию питомца. Мне хотелось собрать спокойный и очень понятный интерфейс, который помогает владельцу фиксировать уколы, не путаться в ротации зон и видеть весь цикл лечения без лишнего стресса.',
+    meta: 'Pet-tech concept · Side project',
+    image: {
+      src: catAppHero,
+      alt: 'Концепт трекера уколов для питомцев с рыжим котом и мобильным интерфейсом',
+    },
+    stats: [
+      { value: '2', label: 'довольных пользователя' },
+      { value: '1', label: 'здоровый кот' },
+      { value: '∞', label: 'поводов показать коту телефон' },
+    ],
+  },
+  sections: [
+    {
+      id: 'goal',
+      navLabel: 'Цель',
+      title: 'Цель продукта',
+      parts: [
+        {
+          type: 'noteCard',
+          title: 'Что должен решать продукт',
+          items: [
+            'Быстро фиксировать инъекции.',
+            'Контролировать ротацию мест уколов.',
+            'Видеть прогресс недели с одного взгляда.',
+            'Хранить всю историю лечения в одном месте.',
+            'Снизить когнитивную нагрузку на владельца.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'solution',
+      navLabel: 'Решение',
+      title: 'Решение',
+      parts: [
+        {
+          type: 'richTextLead',
+          paragraphs: [
+            'Собрала недельный трекер, построенный вокруг фотографии питомца. Важно было сделать трекер визуально понятным и интерактивным, чтобы им могли пользоваться сразу несколько человек.',
+            'Фотография становится главным навигационным элементом приложения и помогает воспринимать лечение не как таблицу с сухими данными, а как понятный ежедневный сценарий ухода.',
+          ],
+        },
+        {
+          type: 'imageBand',
+          media: {
+            type: 'image',
+            src: catSolutionScreens,
+            alt: 'Концепт экранов трекера уколов для питомцев',
+          },
+        },
+      ],
+    },
+    {
+      id: 'concept',
+      navLabel: 'Концепция',
+      title: 'Основная концепция',
+      parts: [
+        {
+          type: 'blocks',
+          blocks: [
+            {
+              type: 'list',
+              heading: 'На главном экране отображается',
+              items: [
+                'Фотография питомца.',
+                'Интерактивные метки инъекций.',
+                'Недельный цикл лечения.',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'imageBand',
+          label: 'Ключевые экраны',
+          media: {
+            type: 'image',
+            src: catConceptScreens,
+            alt: 'Несколько экранов концепта приложения для кота',
+          },
+        },
+      ],
+    },
+    {
+      id: 'tracker',
+      navLabel: 'Трекер',
+      title: 'Визуальный недельный трекер',
+      parts: [
+        {
+          type: 'richTextLead',
+          paragraphs: [
+            'Каждая метка представляет отдельную инъекцию.',
+            'Пользователь может мгновенно увидеть состояние недели без открытия дополнительных экранов и отчетов.',
+          ],
+        },
+        {
+          type: 'phonePair',
+          items: [
+            { type: 'video', src: catWeeklyTrackerVideo, alt: 'Видео с визуальным недельным трекером уколов для питомцев' },
+            { type: 'image', src: catTrackerScreen, alt: 'Экран недельного трекера инъекций для питомцев' },
+          ],
+        },
+        {
+          type: 'insightCards',
+          heading: 'Что видно с одного взгляда',
+          items: [
+            'Какие уколы уже выполнены.',
+            'Какие были пропущены.',
+            'Какая инъекция должна быть следующей.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'result',
+      navLabel: 'Результат',
+      title: 'Результат',
+      parts: [
+        {
+          type: 'noteCard',
+          title: 'Что получилось',
+          items: [
+            'Приложение сейчас находится в бета-тестировании.',
+            'Я нахожусь в поиске пользователей с такими же проблемами, чтобы проверить сценарий на реальных рутинах лечения.',
+          ],
+        },
+      ],
+    },
+  ],
+};
 
 export const betboomPassCaseStudy = {
   slug: 'betboom-pass',
