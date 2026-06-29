@@ -2110,6 +2110,10 @@ button {
     --experience-gap: 32px;
   }
 
+  .case-card-featured .case-description {
+    max-width: 432px;
+  }
+
   .experience {
     grid-template-columns: 320px minmax(0, 1fr);
     gap: 64px;

@@ -28,12 +28,12 @@ export const profile = {
 export const cases = [
   {
     id: 'betboom-pass',
-    title: 'BetBoom PASS',
+    title: 'BetBoom\xa0PASS',
     descriptionLines: [
-      'Проектирование новой механики заданий в раздел геймификации',
-      'и редизайн страницы заданий',
+      'Проектирование новой механики заданий в\xa0раздел геймификации',
+      'и редизайн страницы\xa0заданий',
     ],
-    achievements: ['Увеличение DAU на 60%', 'Retention 75%'],
+    achievements: ['Увеличение DAU на\xa060%', 'Retention\xa075%'],
     theme: 'dark',
     variant: 'featured',
     image: {
