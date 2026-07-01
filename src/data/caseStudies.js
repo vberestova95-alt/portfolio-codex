@@ -60,6 +60,7 @@ export const catAppCaseStudy = {
       { value: '1', label: 'здоровый кот' },
       { value: '∞', label: 'поводов показать коту телефон' },
     ],
+    points: ['Codex', 'Claude Code', 'Figma Make'],
   },
   sections: [
     {
@@ -195,7 +196,7 @@ export const betboomPassCaseStudy = {
     stats: [
       { value: '+75%', label: 'Retention' },
       { value: '+60%', label: 'DAU' },
-      { value: 'NDA', label: 'Пользователей' },
+      { value: 'NDA', label: 'Users' },
     ],
   },
   sections: [
@@ -467,7 +468,7 @@ export const betboomPassCaseStudy = {
               stats: [
                 { value: '+75%', label: 'Retention' },
                 { value: '+60%', label: 'DAU' },
-                { value: 'NDA', label: 'Пользователей' },
+                { value: 'NDA', label: 'Users' },
               ],
             },
             {

@@ -1451,6 +1451,10 @@ button {
   text-align: center;
 }
 
+.case-stat-grid--hero .case-stat-card {
+  justify-content: flex-start;
+}
+
 .case-stat-card strong {
   font-size: 32px;
   line-height: 1.15;

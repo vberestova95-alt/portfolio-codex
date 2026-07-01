@@ -109,6 +109,12 @@ function StatGrid({ items, className = '' }) {
   );
 }
 
+function HeroMeta({ text, items }) {
+  const content = items?.length ? `${text} · ${items.join(' · ')}` : text;
+
+  return <p className="case-hero__meta">{content}</p>;
+}
+
 function ContentBlock({ block }) {
   if (block.type === 'list' || block.type === 'ordered-list') {
     const ListTag = block.type === 'ordered-list' ? 'ol' : 'ul';
@@ -610,8 +616,8 @@ export function CaseStudyPage({ caseStudy }) {
               <h1>{caseStudy.hero.title}</h1>
               <p>{caseStudy.hero.description}</p>
             </div>
-            <StatGrid items={caseStudy.hero.stats} />
-            <p className="case-hero__meta">{caseStudy.hero.meta}</p>
+            <StatGrid items={caseStudy.hero.stats} className="case-stat-grid--hero" />
+            <HeroMeta text={caseStudy.hero.meta} items={caseStudy.hero.points} />
           </div>
           <div className="case-hero__media">
             <img src={caseStudy.hero.image.src} alt={caseStudy.hero.image.alt} />
