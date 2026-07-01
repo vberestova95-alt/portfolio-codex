@@ -9,8 +9,21 @@ function CaseImage({ image, mobileImage, alt, className = '' }) {
   );
 }
 
-export function CaseVisual({ caseItem }) {
-  const isClickable = caseItem.href && caseItem.href !== '#';
+function CaseLinkWrapper({ className, href, ariaLabel, isClickable, children }) {
+  if (!isClickable) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <a className={`${className} case-visual-link`} href={href} aria-label={ariaLabel}>
+      {children}
+    </a>
+  );
+}
+
+export function CaseVisual({ caseItem, isClickable = true }) {
+  const isInteractive = isClickable && caseItem.href && caseItem.href !== '#';
+  const ariaLabel = isInteractive ? `Открыть кейс ${caseItem.title}` : undefined;
 
   if (caseItem.variant === 'featured') {
     return (
@@ -19,79 +32,78 @@ export function CaseVisual({ caseItem }) {
           className="case-backdrop case-backdrop-featured"
           style={{ backgroundImage: `url(${caseItem.backdrop})` }}
         />
-        <a
-          className={`case-visual case-visual-featured${
-            isClickable ? ' case-visual-link' : ''
-          }`}
-          href={isClickable ? caseItem.href : undefined}
-          aria-label={isClickable ? `Открыть кейс ${caseItem.title}` : undefined}
+        <CaseLinkWrapper
+          className="case-visual case-visual-featured"
+          href={caseItem.href}
+          ariaLabel={ariaLabel}
+          isClickable={isInteractive}
         >
           <CaseImage
             image={caseItem.image.src}
             mobileImage={caseItem.mobileImage?.src}
             alt={caseItem.mobileImage?.alt || caseItem.image.alt}
           />
-        </a>
+        </CaseLinkWrapper>
       </>
     );
   }
 
   if (caseItem.variant === 'wide') {
     return (
-      <a
-        className={`case-visual case-visual-news${isClickable ? ' case-visual-link' : ''}`}
-        href={isClickable ? caseItem.href : undefined}
-        aria-label={isClickable ? `Открыть кейс ${caseItem.title}` : undefined}
+      <CaseLinkWrapper
+        className="case-visual case-visual-news"
+        href={caseItem.href}
+        ariaLabel={ariaLabel}
+        isClickable={isInteractive}
       >
         <CaseImage
           image={caseItem.image.src}
           mobileImage={caseItem.mobileImage?.src}
           alt={caseItem.mobileImage?.alt || caseItem.image.alt}
         />
-      </a>
+      </CaseLinkWrapper>
     );
   }
 
   if (caseItem.variant === 'kokoc') {
     return (
       <>
-        <a
-          className={`case-visual case-visual-kokoc-main${
-            isClickable ? ' case-visual-link' : ''
-          }`}
-          href={isClickable ? caseItem.href : undefined}
-          aria-label={isClickable ? `Открыть кейс ${caseItem.title}` : undefined}
+        <CaseLinkWrapper
+          className="case-visual case-visual-kokoc-main"
+          href={caseItem.href}
+          ariaLabel={ariaLabel}
+          isClickable={isInteractive}
         >
           <CaseImage
             image={caseItem.image.src}
             mobileImage={caseItem.mobileImage?.src}
             alt={caseItem.mobileImage?.alt || caseItem.image.alt}
           />
-        </a>
-        <a
-          className={`case-visual case-visual-kokoc-side${
-            isClickable ? ' case-visual-link' : ''
-          }`}
-          href={isClickable ? caseItem.href : undefined}
-          aria-label={isClickable ? `Открыть кейс ${caseItem.title}` : undefined}
+        </CaseLinkWrapper>
+        <CaseLinkWrapper
+          className="case-visual case-visual-kokoc-side"
+          href={caseItem.href}
+          ariaLabel={ariaLabel}
+          isClickable={isInteractive}
         >
           <img src={caseItem.secondaryImage.src} alt={caseItem.secondaryImage.alt} />
-        </a>
+        </CaseLinkWrapper>
       </>
     );
   }
 
   return (
-    <a
-      className={`case-visual case-visual-iquoto${isClickable ? ' case-visual-link' : ''}`}
-      href={isClickable ? caseItem.href : undefined}
-      aria-label={isClickable ? `Открыть кейс ${caseItem.title}` : undefined}
+    <CaseLinkWrapper
+      className="case-visual case-visual-iquoto"
+      href={caseItem.href}
+      ariaLabel={ariaLabel}
+      isClickable={isInteractive}
     >
       <CaseImage
         image={caseItem.image.src}
         mobileImage={caseItem.mobileImage?.src}
         alt={caseItem.mobileImage?.alt || caseItem.image.alt}
       />
-    </a>
+    </CaseLinkWrapper>
   );
 }

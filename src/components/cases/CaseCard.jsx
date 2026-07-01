@@ -18,14 +18,23 @@ const copyClassNamesByVariant = {
 };
 
 export function CaseCard({ caseItem }) {
+  const isClickable = caseItem.href && caseItem.href !== '#';
+
   return (
     <article className={classNamesByVariant[caseItem.variant]}>
+      {isClickable ? (
+        <a
+          className="case-card-hitarea"
+          href={caseItem.href}
+          aria-label={`Открыть кейс ${caseItem.title}`}
+        />
+      ) : null}
       <div className={copyClassNamesByVariant[caseItem.variant]}>
         <h2>{caseItem.title}</h2>
         <CaseDescription caseItem={caseItem} />
       </div>
-      <CaseButton href={caseItem.href} />
-      <CaseVisual caseItem={caseItem} />
+      <CaseButton href={caseItem.href} interactive={false} />
+      <CaseVisual caseItem={caseItem} isClickable={false} />
     </article>
   );
 }
