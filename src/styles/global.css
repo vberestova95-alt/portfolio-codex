@@ -580,6 +580,8 @@ button {
   line-height: normal;
   font-weight: 700;
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .case-card-wide .case-copy h2,
@@ -596,10 +598,13 @@ button {
   line-height: 1.35;
   color: var(--text-muted);
   max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
 .case-description-list p {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .case-dark .case-copy {
@@ -762,20 +767,31 @@ button {
   height: auto;
 }
 
+.case-card-featured .case-copy {
+  width: min(544px, calc(36.6% - 28px));
+}
+
+.case-card-wide .case-copy {
+  width: min(544px, calc(36.5% - 28px));
+}
+
+.case-card-kokoc .case-copy,
 .case-card-iquoto .case-copy {
-  width: min(577px, calc(100% - 104px));
+  width: min(324px, calc(100% - 104px));
 }
 
 .case-card-kokoc .case-description {
-  width: 370px;
+  width: auto;
+  max-width: 100%;
 }
 
 .case-card-wide .case-description {
-  max-width: 388px;
+  max-width: 100%;
 }
 
 .case-card-iquoto .case-description {
-  width: 482px;
+  width: auto;
+  max-width: 100%;
 }
 
 .case-visual-iquoto {
